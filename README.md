@@ -16,7 +16,7 @@ I wanted to become more knowledgeable on the up and coming engine Godot, specifi
 
 {Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the game being played and a walkthrough of the code.}
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video]([http://youtube.link.goes.here](https://youtu.be/vREekBrXbVQ))
 
 # Development Environment
 
