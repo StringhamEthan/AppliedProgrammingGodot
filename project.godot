@@ -13,11 +13,12 @@ config_version=5
 config/name="Applied Programming Godot"
 run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Art/icon.svg"
 
 [autoload]
 
-MultiplayerManager="*res://MultiplayerManager.gd"
+MultiplayerManager="*res://Multiplayer/MultiplayerManager.gd"
+AudioManager="*res://Audio/ManagerAndScripts/AudioManager.gd"
 
 [input]
 

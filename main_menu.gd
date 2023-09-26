@@ -1,6 +1,5 @@
 extends Control
-
-var RandomNames = ["Bob","Joe","Obama","Stinky","Scissors","Angry"]
+var RandomNames = ["Bob","Joe","Phillip","Carl","Donny"]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()

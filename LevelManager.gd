@@ -5,6 +5,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var index = 0
+	#Spawn all the playres in a multiplayer friendly way
 	for i in MultiplayerManager.Players:
 		var CurrentPlayer = PlayerScene.instantiate()
 		CurrentPlayer.name = str(MultiplayerManager.Players[i].id)

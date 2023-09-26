@@ -1,11 +1,11 @@
 [gd_scene load_steps=64 format=3 uid="uid://8dkruhhct78k"]
 
 [ext_resource type="Script" path="res://MainCharacter.gd" id="1_xchv8"]
-[ext_resource type="Shader" path="res://BlinkShader.gdshader" id="2_1pbkl"]
-[ext_resource type="Texture2D" uid="uid://ia8c84iwwjkc" path="res://green_character.png" id="2_cquam"]
-[ext_resource type="Texture2D" uid="uid://b11qvslj4npsf" path="res://purple_character.png" id="2_wjrju"]
-[ext_resource type="Texture2D" uid="uid://qd8xnixdf8j2" path="res://purple_hand.png" id="3_3ja4d"]
-[ext_resource type="Texture2D" uid="uid://dj2niwmgj6cvf" path="res://green_hand.png" id="3_60y2i"]
+[ext_resource type="Texture2D" uid="uid://ia8c84iwwjkc" path="res://Art/green_character.png" id="2_c68vo"]
+[ext_resource type="Texture2D" uid="uid://dj2niwmgj6cvf" path="res://Art/green_hand.png" id="3_yntvr"]
+[ext_resource type="Shader" path="res://Art/Shaders/BlinkShader.gdshader" id="4_7rle5"]
+[ext_resource type="Texture2D" uid="uid://b11qvslj4npsf" path="res://Art/purple_character.png" id="5_harff"]
+[ext_resource type="Texture2D" uid="uid://qd8xnixdf8j2" path="res://Art/purple_hand.png" id="6_3drrv"]
 [ext_resource type="Animation" uid="uid://djyv4qihu5n4i" path="res://Animations/Bow.res" id="7_08dnc"]
 [ext_resource type="Animation" uid="uid://djdfhouvpxj0k" path="res://Animations/BowIdle.res" id="8_wp5lr"]
 [ext_resource type="Animation" uid="uid://mwu1ciro30qe" path="res://Animations/Punch.res" id="9_glirr"]
@@ -23,13 +23,13 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hvira"]
 resource_local_to_scene = true
-shader = ExtResource("2_1pbkl")
+shader = ExtResource("4_7rle5")
 shader_parameter/active = false
 shader_parameter/tint = Color(0.996078, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_di2ta"]
 resource_local_to_scene = true
-shader = ExtResource("2_1pbkl")
+shader = ExtResource("4_7rle5")
 shader_parameter/active = false
 shader_parameter/tint = Color(1, 0, 0, 1)
 
@@ -38,7 +38,7 @@ radius = 6.40003
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ie4dr"]
 resource_local_to_scene = true
-shader = ExtResource("2_1pbkl")
+shader = ExtResource("4_7rle5")
 shader_parameter/active = false
 shader_parameter/tint = Color(1, 0, 0, 1)
 
@@ -185,7 +185,7 @@ states/Sword/position = Vector2(459, 175)
 states/SwordBackstep/node = SubResource("AnimationNodeAnimation_rfnbf")
 states/SwordBackstep/position = Vector2(309, 220)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_cqr4k"), "Idle", "Punch", SubResource("AnimationNodeStateMachineTransition_um505"), "Punch", "Idle", SubResource("AnimationNodeStateMachineTransition_ffupy"), "Idle", "Spear", SubResource("AnimationNodeStateMachineTransition_71ow0"), "Spear", "Idle", SubResource("AnimationNodeStateMachineTransition_ra4ks"), "Idle", "Bow", SubResource("AnimationNodeStateMachineTransition_s5gsf"), "Bow", "ReleaseBow", SubResource("AnimationNodeStateMachineTransition_pwf75"), "ReleaseBow", "Idle", SubResource("AnimationNodeStateMachineTransition_57frg"), "Idle", "SpearCharge", SubResource("AnimationNodeStateMachineTransition_oygw0"), "SpearCharge", "Idle", SubResource("AnimationNodeStateMachineTransition_we6mf"), "Idle", "Sword", SubResource("AnimationNodeStateMachineTransition_fekua"), "Sword", "Idle", SubResource("AnimationNodeStateMachineTransition_ekhui"), "SwordBackstep", "Idle", SubResource("AnimationNodeStateMachineTransition_jlyka"), "Idle", "SwordBackstep", SubResource("AnimationNodeStateMachineTransition_vxcrp")]
-graph_offset = Vector2(-139, 35)
+graph_offset = Vector2(-154, 4)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vw1rp"]
 properties/0/path = NodePath(".:SyncPos")
@@ -209,21 +209,21 @@ radius = 48.0
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 z_index = 5
 script = ExtResource("1_xchv8")
-AlliedSprite = ExtResource("2_cquam")
-AlliedHandSprite = ExtResource("3_60y2i")
+AlliedSprite = ExtResource("2_c68vo")
+AlliedHandSprite = ExtResource("3_yntvr")
 
 [node name="Body" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_hvira")
 rotation = 1.5708
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("2_wjrju")
+texture = ExtResource("5_harff")
 
 [node name="Hand1" type="Sprite2D" parent="Body"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_di2ta")
 position = Vector2(28.7999, -19.2001)
-texture = ExtResource("3_3ja4d")
+texture = ExtResource("6_3drrv")
 
 [node name="Area2D" type="Area2D" parent="Body/Hand1"]
 
@@ -235,7 +235,7 @@ disabled = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_ie4dr")
 position = Vector2(-32.0001, -19.1999)
-texture = ExtResource("3_3ja4d")
+texture = ExtResource("6_3drrv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0

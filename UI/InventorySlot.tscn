@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c12t58swnqtmq"]
+
+[ext_resource type="Script" path="res://UI/InventorySlot.gd" id="1_hpnlx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ch51"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="InventorySlot" type="Control"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_hpnlx")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0ch51")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
