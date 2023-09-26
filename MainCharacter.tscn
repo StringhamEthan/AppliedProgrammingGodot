@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://8dkruhhct78k"]
+[gd_scene load_steps=64 format=3 uid="uid://8dkruhhct78k"]
 
 [ext_resource type="Script" path="res://MainCharacter.gd" id="1_xchv8"]
 [ext_resource type="Shader" path="res://BlinkShader.gdshader" id="2_1pbkl"]
@@ -6,6 +6,20 @@
 [ext_resource type="Texture2D" uid="uid://b11qvslj4npsf" path="res://purple_character.png" id="2_wjrju"]
 [ext_resource type="Texture2D" uid="uid://qd8xnixdf8j2" path="res://purple_hand.png" id="3_3ja4d"]
 [ext_resource type="Texture2D" uid="uid://dj2niwmgj6cvf" path="res://green_hand.png" id="3_60y2i"]
+[ext_resource type="Animation" uid="uid://djyv4qihu5n4i" path="res://Animations/Bow.res" id="7_08dnc"]
+[ext_resource type="Animation" uid="uid://djdfhouvpxj0k" path="res://Animations/BowIdle.res" id="8_wp5lr"]
+[ext_resource type="Animation" uid="uid://mwu1ciro30qe" path="res://Animations/Punch.res" id="9_glirr"]
+[ext_resource type="Animation" uid="uid://cutmvrakwmy84" path="res://Animations/PunchIdle.res" id="10_loek5"]
+[ext_resource type="Animation" uid="uid://cwk8agciyjbso" path="res://Animations/PunchToSpear.res" id="11_wuryr"]
+[ext_resource type="Animation" uid="uid://do1fqct0hvj" path="res://Animations/RESET.res" id="12_4gkf0"]
+[ext_resource type="Animation" uid="uid://dmsue1ax640ln" path="res://Animations/ReleaseBow.res" id="13_afk42"]
+[ext_resource type="Animation" uid="uid://rlwls408nrsq" path="res://Animations/Spear.res" id="14_63ob5"]
+[ext_resource type="Animation" uid="uid://eav6ffqayoi3" path="res://Animations/SpearCharge.res" id="15_n5aks"]
+[ext_resource type="Animation" uid="uid://dh7cam1uxen2r" path="res://Animations/SpearIdle.res" id="16_0npay"]
+[ext_resource type="Animation" uid="uid://uv7okh4nj57f" path="res://Animations/Sword.res" id="17_aoc54"]
+[ext_resource type="Animation" uid="uid://b67nphvvhq5vc" path="res://Animations/SwordIdle.res" id="18_q6cmh"]
+[ext_resource type="Animation" uid="uid://deb4snwijs0g0" path="res://Animations/SwordBackstep.res" id="19_sner0"]
+[ext_resource type="AnimationLibrary" uid="uid://dlx3c58m5syh5" path="res://Animations/Human.res" id="20_ciw0l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hvira"]
 resource_local_to_scene = true
@@ -31,521 +45,21 @@ shader_parameter/tint = Color(1, 0, 0, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_x45is"]
 radius = 48.0
 
-[sub_resource type="Animation" id="Animation_65jfh"]
-resource_name = "Punch"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Hand1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(28.7999, -19.2001), Vector2(-0.00018692, -51.2), Vector2(19.1999, -35.2001), Vector2(28.7999, -19.2001)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Hand1:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, -1.0472, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Body/Hand2:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-32.0001, -19.1999)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Body/Hand1/Area2D/HandCollision:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_ob81i"]
-resource_name = "PunchIdle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Hand1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(28.7999, -19.2001)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Hand2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-32.0001, -19.1999)]
-}
-
-[sub_resource type="Animation" id="Animation_gmd1p"]
-resource_name = "PunchToSpear"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Hand1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(28.7999, -19.2001), Vector2(12.7999, -25.6)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Hand2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-32.0001, -19.1999), Vector2(-0.000101089, -28.8)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Body/Hand1:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-1.29203, -1.22247]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Body/Hand2:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-1.22247, -1.29203]
-}
-
-[sub_resource type="Animation" id="Animation_pvvdv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Hand1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(28.7999, -19.2001)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Hand1:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Body/Hand2:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-32.0001, -19.1999)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Body/Hand1/Area2D/HandCollision:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Body/Hand2:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_hhd1x"]
-resource_name = "Spear"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Hand2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(12.7999, -25.6), Vector2(25.6, -12.8001), Vector2(25.6, -12.8001), Vector2(-0.000160217, -44.8), Vector2(12.7999, -25.6)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Hand1:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-0.000101089, -28.8), Vector2(19.1999, -28.8001), Vector2(19.1999, -28.8001), Vector2(-0.000230789, -64), Vector2(-0.000101089, -28.8)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Body/Hand1:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [-1.29203, -0.482603, -0.482603, 0.0, -1.29203]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Body/Hand2:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [-1.22247, -0.589269, -0.589269, -0.0461417, -1.22247]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.1, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"EnableWeapon"
-}, {
-"args": [],
-"method": &"DisableWeapon"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_h1iyc"]
-resource_name = "SpearIdle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Hand2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(12.7999, -25.6)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Hand1:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-0.000101089, -28.8)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Body/Hand1:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.29203]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Body/Hand2:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.22247]
-}
-
-[sub_resource type="Animation" id="Animation_d1mei"]
-resource_name = "BowIdle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Hand1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-0.000127792, -35.2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Hand1:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Body/Hand2:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.5708]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Body/Hand2:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-0.000118256, -32)]
-}
-
-[sub_resource type="Animation" id="Animation_nflo3"]
-resource_name = "Bow"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Hand1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-0.000127792, -35.2), Vector2(-0.000185013, -51.2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Hand1:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Body/Hand2:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-1.44892, -1.5708]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Body/Hand2:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-0.000118256, -32), Vector2(-9.15527e-05, -25.6)]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"LoadWeapon"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_mppxw"]
-resource_name = "ReleaseBow"
-length = 0.02
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Hand1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.02),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-0.000185013, -51.2), Vector2(-0.000127792, -35.2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Hand1:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.02),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Body/Hand2:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.02),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-1.5708, -1.5708]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Body/Hand2:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.02),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-9.15527e-05, -25.6), Vector2(-0.000118256, -32)]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.01, 0.02),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [],
-"method": &"ReleaseAttack"
-}, {
-"args": [],
-"method": &"UnloadWeapon"
-}, {
-"args": [],
-"method": &"FireWeapon"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5h5sh"]
 _data = {
-"Bow": SubResource("Animation_nflo3"),
-"BowIdle": SubResource("Animation_d1mei"),
-"Punch": SubResource("Animation_65jfh"),
-"PunchIdle": SubResource("Animation_ob81i"),
-"PunchToSpear": SubResource("Animation_gmd1p"),
-"RESET": SubResource("Animation_pvvdv"),
-"ReleaseBow": SubResource("Animation_mppxw"),
-"Spear": SubResource("Animation_hhd1x"),
-"SpearIdle": SubResource("Animation_h1iyc")
+"Bow": ExtResource("7_08dnc"),
+"BowIdle": ExtResource("8_wp5lr"),
+"Punch": ExtResource("9_glirr"),
+"PunchIdle": ExtResource("10_loek5"),
+"PunchToSpear": ExtResource("11_wuryr"),
+"RESET": ExtResource("12_4gkf0"),
+"ReleaseBow": ExtResource("13_afk42"),
+"Spear": ExtResource("14_63ob5"),
+"SpearCharge": ExtResource("15_n5aks"),
+"SpearIdle": ExtResource("16_0npay"),
+"Sword": ExtResource("17_aoc54"),
+"SwordBackstep": ExtResource("19_sner0"),
+"SwordIdle": ExtResource("18_q6cmh")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_06mmg"]
@@ -560,6 +74,9 @@ animation = &"PunchIdle"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qde15"]
 animation = &"SpearIdle"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kqmuo"]
+animation = &"SwordIdle"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a3bwm"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7u2t6"]
@@ -571,6 +88,10 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wkv4q"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2ords"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ahlac"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1gdnr"]
 state_machine_type = 1
 states/BowIdle/node = SubResource("AnimationNodeAnimation_owib6")
@@ -580,8 +101,10 @@ states/PunchIdle/position = Vector2(481, 80)
 states/SpearIdle/node = SubResource("AnimationNodeAnimation_qde15")
 states/SpearIdle/position = Vector2(472, 305)
 states/Start/position = Vector2(213, 100)
-transitions = ["SpearIdle", "PunchIdle", SubResource("AnimationNodeStateMachineTransition_a3bwm"), "PunchIdle", "SpearIdle", SubResource("AnimationNodeStateMachineTransition_7u2t6"), "Start", "PunchIdle", SubResource("AnimationNodeStateMachineTransition_prw5n"), "PunchIdle", "BowIdle", SubResource("AnimationNodeStateMachineTransition_2sfma"), "BowIdle", "PunchIdle", SubResource("AnimationNodeStateMachineTransition_wkv4q")]
-graph_offset = Vector2(106, 41)
+states/SwordIdle/node = SubResource("AnimationNodeAnimation_kqmuo")
+states/SwordIdle/position = Vector2(367, 0)
+transitions = ["SpearIdle", "PunchIdle", SubResource("AnimationNodeStateMachineTransition_a3bwm"), "PunchIdle", "SpearIdle", SubResource("AnimationNodeStateMachineTransition_7u2t6"), "Start", "PunchIdle", SubResource("AnimationNodeStateMachineTransition_prw5n"), "PunchIdle", "BowIdle", SubResource("AnimationNodeStateMachineTransition_2sfma"), "BowIdle", "PunchIdle", SubResource("AnimationNodeStateMachineTransition_wkv4q"), "PunchIdle", "SwordIdle", SubResource("AnimationNodeStateMachineTransition_2ords"), "SwordIdle", "PunchIdle", SubResource("AnimationNodeStateMachineTransition_ahlac")]
+graph_offset = Vector2(-67, -96)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k4f7q"]
 animation = &"Punch"
@@ -591,6 +114,15 @@ animation = &"ReleaseBow"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_68t44"]
 animation = &"Spear"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7e8ns"]
+animation = &"SpearCharge"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6uyld"]
+animation = &"Sword"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rfnbf"]
+animation = &"SwordBackstep"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cqr4k"]
 advance_mode = 2
@@ -616,6 +148,24 @@ switch_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oygw0"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_we6mf"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fekua"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ekhui"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jlyka"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vxcrp"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1yt7e"]
 states/Bow/node = SubResource("AnimationNodeAnimation_06mmg")
 states/Bow/position = Vector2(508, 60)
@@ -627,16 +177,22 @@ states/ReleaseBow/node = SubResource("AnimationNodeAnimation_8iek4")
 states/ReleaseBow/position = Vector2(640, 95)
 states/Spear/node = SubResource("AnimationNodeAnimation_68t44")
 states/Spear/position = Vector2(432, 24)
+states/SpearCharge/node = SubResource("AnimationNodeAnimation_7e8ns")
+states/SpearCharge/position = Vector2(176, 31)
 states/Start/position = Vector2(161, 112)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_cqr4k"), "Idle", "Punch", SubResource("AnimationNodeStateMachineTransition_um505"), "Punch", "Idle", SubResource("AnimationNodeStateMachineTransition_ffupy"), "Idle", "Spear", SubResource("AnimationNodeStateMachineTransition_71ow0"), "Spear", "Idle", SubResource("AnimationNodeStateMachineTransition_ra4ks"), "Idle", "Bow", SubResource("AnimationNodeStateMachineTransition_s5gsf"), "Bow", "ReleaseBow", SubResource("AnimationNodeStateMachineTransition_pwf75"), "ReleaseBow", "Idle", SubResource("AnimationNodeStateMachineTransition_57frg")]
-graph_offset = Vector2(-61, -75)
+states/Sword/node = SubResource("AnimationNodeAnimation_6uyld")
+states/Sword/position = Vector2(459, 175)
+states/SwordBackstep/node = SubResource("AnimationNodeAnimation_rfnbf")
+states/SwordBackstep/position = Vector2(309, 220)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_cqr4k"), "Idle", "Punch", SubResource("AnimationNodeStateMachineTransition_um505"), "Punch", "Idle", SubResource("AnimationNodeStateMachineTransition_ffupy"), "Idle", "Spear", SubResource("AnimationNodeStateMachineTransition_71ow0"), "Spear", "Idle", SubResource("AnimationNodeStateMachineTransition_ra4ks"), "Idle", "Bow", SubResource("AnimationNodeStateMachineTransition_s5gsf"), "Bow", "ReleaseBow", SubResource("AnimationNodeStateMachineTransition_pwf75"), "ReleaseBow", "Idle", SubResource("AnimationNodeStateMachineTransition_57frg"), "Idle", "SpearCharge", SubResource("AnimationNodeStateMachineTransition_oygw0"), "SpearCharge", "Idle", SubResource("AnimationNodeStateMachineTransition_we6mf"), "Idle", "Sword", SubResource("AnimationNodeStateMachineTransition_fekua"), "Sword", "Idle", SubResource("AnimationNodeStateMachineTransition_ekhui"), "SwordBackstep", "Idle", SubResource("AnimationNodeStateMachineTransition_jlyka"), "Idle", "SwordBackstep", SubResource("AnimationNodeStateMachineTransition_vxcrp")]
+graph_offset = Vector2(-139, 35)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vw1rp"]
-properties/0/path = NodePath(".:global_position")
+properties/0/path = NodePath(".:SyncPos")
 properties/0/spawn = true
 properties/0/sync = true
 properties/0/watch = false
-properties/1/path = NodePath(".:rotation")
+properties/1/path = NodePath(".:SyncRot")
 properties/1/spawn = true
 properties/1/sync = true
 properties/1/watch = false
@@ -647,7 +203,10 @@ font_color = Color(0, 0, 0, 1)
 outline_size = 2
 outline_color = Color(1, 0.0392157, 0, 1)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_u2blv"]
+radius = 48.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 z_index = 5
 script = ExtResource("1_xchv8")
 AlliedSprite = ExtResource("2_cquam")
@@ -687,7 +246,8 @@ shape = SubResource("CircleShape2D_x45is")
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_5h5sh")
+"": SubResource("AnimationLibrary_5h5sh"),
+"Human": ExtResource("20_ciw0l")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
@@ -696,6 +256,8 @@ anim_player = NodePath("../Anim")
 active = true
 
 [node name="MultSync" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 0.06
+delta_interval = 0.06
 replication_config = SubResource("SceneReplicationConfig_vw1rp")
 
 [node name="LabelHolder" type="Node2D" parent="."]
@@ -711,4 +273,19 @@ label_settings = SubResource("LabelSettings_6eidr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ReviveTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="InteractZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractZone"]
+position = Vector2(88, 0)
+shape = SubResource("CircleShape2D_u2blv")
+
 [connection signal="body_entered" from="Body/Hand1/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="ReviveTimer" to="." method="_on_revive_timer_timeout"]
+[connection signal="body_entered" from="InteractZone" to="." method="_on_interact_zone_body_entered"]
+[connection signal="body_exited" from="InteractZone" to="." method="_on_interact_zone_body_exited"]

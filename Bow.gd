@@ -2,6 +2,7 @@ extends Node2D
 
 @export var Damage := 25
 @export var AttackAnim := ""
+@export var AltAttackAnim := ""
 @export var IdleAnim := ""
 @export var ReleaseAnim := ""
 @export var PProjectile = "res://arrow.tscn"
