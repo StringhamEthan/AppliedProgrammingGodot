@@ -30,7 +30,6 @@ This game was developed in Godot using GDscript. No additional libraries or syst
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
 * Finalize multiplayer elements
 * Get enemy ai working
 * Polish and finish the UI and inventory
