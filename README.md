@@ -28,6 +28,13 @@ This game was developed in Godot using GDscript. No additional libraries or syst
 * [Godot Shaders]([http://url.link.goes.here](https://godotshaders.com/))
 * [Godot Documentation]([http://url.link.goes.here](https://docs.godotengine.org/en/stable/index.html))
 
+
+# New Changes
+Three shaders have been fully implemented.
+Two of them can be seen when starting the game. The first is a diamonds effect that covers the screen in darkness. The second is a psychedillic shaders effect that works as a loading screen. 
+The final shader is a blinking shader that appears whenever the player takes damage.
+
+
 # Future Work
 
 * Finalize multiplayer elements
