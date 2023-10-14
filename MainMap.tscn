@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://LevelManager.gd" id="1_evhv1"]
 [ext_resource type="PackedScene" uid="uid://8dkruhhct78k" path="res://MainCharacter.tscn" id="2_nrl5g"]
 [ext_resource type="Texture2D" uid="uid://b6xdyrv12tbxp" path="res://Art/tilesheet.png" id="3_0hml4"]
-[ext_resource type="PackedScene" uid="uid://buypbjti4ore8" path="res://Props/crate.tscn" id="4_k3yw8"]
+[ext_resource type="PackedScene" uid="uid://donvdvxsn3tkj" path="res://Weapons/trap_spear.tscn" id="4_ok7ty"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0mh0w"]
 texture = ExtResource("3_0hml4")
@@ -479,17 +479,5 @@ position = Vector2(256, 200)
 rotation = -2.61799
 navigation_polygon = SubResource("NavigationPolygon_13vra")
 
-[node name="Crate" parent="." instance=ExtResource("4_k3yw8")]
-position = Vector2(136, -176)
-
-[node name="Crate2" parent="." instance=ExtResource("4_k3yw8")]
-position = Vector2(456, -56)
-
-[node name="Crate3" parent="." instance=ExtResource("4_k3yw8")]
-position = Vector2(376, 144)
-
-[node name="Crate4" parent="." instance=ExtResource("4_k3yw8")]
-position = Vector2(96, 176)
-
-[node name="Crate5" parent="." instance=ExtResource("4_k3yw8")]
-position = Vector2(-168, -168)
+[node name="TrapSpear" parent="." instance=ExtResource("4_ok7ty")]
+position = Vector2(-128, 16)

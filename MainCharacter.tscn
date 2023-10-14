@@ -95,16 +95,16 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1gdnr"]
 state_machine_type = 1
 states/BowIdle/node = SubResource("AnimationNodeAnimation_owib6")
-states/BowIdle/position = Vector2(595, 142)
+states/BowIdle/position = Vector2(596, 144)
 states/PunchIdle/node = SubResource("AnimationNodeAnimation_vi8uc")
 states/PunchIdle/position = Vector2(481, 80)
 states/SpearIdle/node = SubResource("AnimationNodeAnimation_qde15")
-states/SpearIdle/position = Vector2(472, 305)
+states/SpearIdle/position = Vector2(476, 211)
 states/Start/position = Vector2(213, 100)
 states/SwordIdle/node = SubResource("AnimationNodeAnimation_kqmuo")
 states/SwordIdle/position = Vector2(367, 0)
 transitions = ["SpearIdle", "PunchIdle", SubResource("AnimationNodeStateMachineTransition_a3bwm"), "PunchIdle", "SpearIdle", SubResource("AnimationNodeStateMachineTransition_7u2t6"), "Start", "PunchIdle", SubResource("AnimationNodeStateMachineTransition_prw5n"), "PunchIdle", "BowIdle", SubResource("AnimationNodeStateMachineTransition_2sfma"), "BowIdle", "PunchIdle", SubResource("AnimationNodeStateMachineTransition_wkv4q"), "PunchIdle", "SwordIdle", SubResource("AnimationNodeStateMachineTransition_2ords"), "SwordIdle", "PunchIdle", SubResource("AnimationNodeStateMachineTransition_ahlac")]
-graph_offset = Vector2(-67, -96)
+graph_offset = Vector2(-27, -15)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k4f7q"]
 animation = &"Punch"
@@ -185,7 +185,7 @@ states/Sword/position = Vector2(459, 175)
 states/SwordBackstep/node = SubResource("AnimationNodeAnimation_rfnbf")
 states/SwordBackstep/position = Vector2(309, 220)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_cqr4k"), "Idle", "Punch", SubResource("AnimationNodeStateMachineTransition_um505"), "Punch", "Idle", SubResource("AnimationNodeStateMachineTransition_ffupy"), "Idle", "Spear", SubResource("AnimationNodeStateMachineTransition_71ow0"), "Spear", "Idle", SubResource("AnimationNodeStateMachineTransition_ra4ks"), "Idle", "Bow", SubResource("AnimationNodeStateMachineTransition_s5gsf"), "Bow", "ReleaseBow", SubResource("AnimationNodeStateMachineTransition_pwf75"), "ReleaseBow", "Idle", SubResource("AnimationNodeStateMachineTransition_57frg"), "Idle", "SpearCharge", SubResource("AnimationNodeStateMachineTransition_oygw0"), "SpearCharge", "Idle", SubResource("AnimationNodeStateMachineTransition_we6mf"), "Idle", "Sword", SubResource("AnimationNodeStateMachineTransition_fekua"), "Sword", "Idle", SubResource("AnimationNodeStateMachineTransition_ekhui"), "SwordBackstep", "Idle", SubResource("AnimationNodeStateMachineTransition_jlyka"), "Idle", "SwordBackstep", SubResource("AnimationNodeStateMachineTransition_vxcrp")]
-graph_offset = Vector2(-154, 4)
+graph_offset = Vector2(-209, -1)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vw1rp"]
 properties/0/path = NodePath(".:SyncPos")

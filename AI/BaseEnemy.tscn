@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://fbkxcuc2pt15"]
+[gd_scene load_steps=35 format=3 uid="uid://fbkxcuc2pt15"]
 
+[ext_resource type="Shader" path="res://Art/Shaders/BlinkShader.gdshader" id="1_28bbg"]
 [ext_resource type="Script" path="res://AI/BaseEnemy.gd" id="1_hx0pv"]
 [ext_resource type="Texture2D" uid="uid://bsj247kfnxro3" path="res://Art/red_character.png" id="1_omi8j"]
 [ext_resource type="Texture2D" uid="uid://ckkwaliows2ac" path="res://Art/red_hand.png" id="2_oan5e"]
@@ -8,23 +9,75 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_7pfn1"]
 radius = 48.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ofb3f"]
+resource_local_to_scene = true
+shader = ExtResource("1_28bbg")
+shader_parameter/active = false
+shader_parameter/tint = Color(1, 0, 0.0431373, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_alx2e"]
+resource_local_to_scene = true
+shader = ExtResource("1_28bbg")
+shader_parameter/active = false
+shader_parameter/tint = Color(1, 0, 0.0392157, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_c1dtv"]
 radius = 6.4001
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c0e2t"]
+resource_local_to_scene = true
+shader = ExtResource("1_28bbg")
+shader_parameter/active = false
+shader_parameter/tint = Color(1, 0, 0.00784314, 1)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ooij0"]
+animation = &"Human/BowIdle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ykffy"]
 animation = &"Human/PunchIdle"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pjv80"]
+animation = &"Human/SpearIdle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lcsg8"]
+animation = &"Human/SwordIdle"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k33tg"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0xkrm"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_au4u6"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_umn6w"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c5rbe"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k6ini"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5s3am"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_n7xmb"]
 state_machine_type = 1
-states/Human_PunchIdle/node = SubResource("AnimationNodeAnimation_ykffy")
-states/Human_PunchIdle/position = Vector2(361, 85)
-transitions = ["Start", "Human_PunchIdle", SubResource("AnimationNodeStateMachineTransition_k33tg")]
+states/BowIdle/node = SubResource("AnimationNodeAnimation_ooij0")
+states/BowIdle/position = Vector2(297, 197)
+states/PunchIdle/node = SubResource("AnimationNodeAnimation_ykffy")
+states/PunchIdle/position = Vector2(361, 85)
+states/SpearIdle/node = SubResource("AnimationNodeAnimation_pjv80")
+states/SpearIdle/position = Vector2(497, 177)
+states/SwordIdle/node = SubResource("AnimationNodeAnimation_lcsg8")
+states/SwordIdle/position = Vector2(621, 106)
+transitions = ["Start", "PunchIdle", SubResource("AnimationNodeStateMachineTransition_k33tg"), "PunchIdle", "BowIdle", SubResource("AnimationNodeStateMachineTransition_0xkrm"), "BowIdle", "PunchIdle", SubResource("AnimationNodeStateMachineTransition_au4u6"), "PunchIdle", "SpearIdle", SubResource("AnimationNodeStateMachineTransition_umn6w"), "SpearIdle", "PunchIdle", SubResource("AnimationNodeStateMachineTransition_c5rbe"), "PunchIdle", "SwordIdle", SubResource("AnimationNodeStateMachineTransition_k6ini"), "SwordIdle", "PunchIdle", SubResource("AnimationNodeStateMachineTransition_5s3am")]
+graph_offset = Vector2(-81, -30)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cc46m"]
 animation = &"Human/Punch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n6et8"]
+animation = &"Human/Spear"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xlvw5"]
+animation = &"Human/Sword"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_knr53"]
 advance_mode = 2
@@ -35,14 +88,30 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jeu4y"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4jo7y"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aud5p"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0krn5"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_diboq"]
 states/Idle/node = SubResource("AnimationNodeStateMachine_n7xmb")
 states/Idle/position = Vector2(376, 107)
 states/Punch/node = SubResource("AnimationNodeAnimation_cc46m")
 states/Punch/position = Vector2(368, 30)
+states/Spear/node = SubResource("AnimationNodeAnimation_n6et8")
+states/Spear/position = Vector2(466, 42)
 states/Start/position = Vector2(193, 120)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_knr53"), "Idle", "Punch", SubResource("AnimationNodeStateMachineTransition_26lnp"), "Punch", "Idle", SubResource("AnimationNodeStateMachineTransition_f6dra")]
-graph_offset = Vector2(-118, -13)
+states/Sword/node = SubResource("AnimationNodeAnimation_xlvw5")
+states/Sword/position = Vector2(572, 105)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_knr53"), "Idle", "Punch", SubResource("AnimationNodeStateMachineTransition_26lnp"), "Punch", "Idle", SubResource("AnimationNodeStateMachineTransition_f6dra"), "Idle", "Spear", SubResource("AnimationNodeStateMachineTransition_jeu4y"), "Spear", "Idle", SubResource("AnimationNodeStateMachineTransition_4jo7y"), "Idle", "Sword", SubResource("AnimationNodeStateMachineTransition_aud5p"), "Sword", "Idle", SubResource("AnimationNodeStateMachineTransition_0krn5")]
+graph_offset = Vector2(-163, -87)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vylqk"]
 properties/0/path = NodePath(".:position")
@@ -54,18 +123,20 @@ properties/1/spawn = true
 properties/1/sync = true
 properties/1/watch = false
 
-[node name="BaseEnemy" type="CharacterBody2D"]
+[node name="BaseEnemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_hx0pv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7pfn1")
 
 [node name="Body" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ofb3f")
 rotation = 1.5708
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_omi8j")
 
 [node name="Hand1" type="Sprite2D" parent="Body"]
+material = SubResource("ShaderMaterial_alx2e")
 position = Vector2(28.7999, -19.2001)
 texture = ExtResource("2_oan5e")
 
@@ -77,6 +148,7 @@ position = Vector2(60.8001, -0.000102997)
 shape = SubResource("CircleShape2D_c1dtv")
 
 [node name="Hand2" type="Sprite2D" parent="Body"]
+material = SubResource("ShaderMaterial_c0e2t")
 position = Vector2(-32.0001, -19.1999)
 texture = ExtResource("2_oan5e")
 
@@ -92,8 +164,21 @@ active = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
+radius = 100.0
+max_speed = 250.0
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_vylqk")
 
+[node name="WeaveTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 200.0
+
+[node name="ChangeDirectionTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="body_entered" from="Body/Hand1/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="WeaveTimer" to="." method="_on_weave_timer_timeout"]
+[connection signal="timeout" from="ChangeDirectionTimer" to="." method="_on_change_direction_timer_timeout"]

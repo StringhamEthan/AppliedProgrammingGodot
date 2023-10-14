@@ -24,4 +24,6 @@ func _on_start_game_pressed():
 
 @rpc("any_peer","call_local") 
 func StartGame():
+	TransitionManager.Transition()
+	await get_tree().create_timer(.5).timeout
 	get_tree().change_scene_to_file("res://MainMap.tscn")

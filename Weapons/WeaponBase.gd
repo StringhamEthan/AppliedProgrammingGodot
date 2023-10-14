@@ -11,6 +11,8 @@ extends Node2D
 @export var ReleaseAnim := ""
 #Sound to play
 @export var AttackSound := ""
+
+var HitEnemies = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area2D/CollisionShape2D.disabled = true
@@ -26,7 +28,7 @@ func SetHitBox(NewSet : bool):
 
 #Damage whatever we came in contact with.
 func _on_area_2d_body_entered(body):
-	if body.has_method("TakeDamage"):
+	if body.has_method("TakeDamage") && body.is_in_group("Enemy") == HitEnemies:
 		body.TakeDamage(Damage,GetKnockback())
 
 #used to calculate knockback
