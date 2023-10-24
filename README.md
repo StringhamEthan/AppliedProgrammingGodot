@@ -18,6 +18,7 @@ I wanted to become more knowledgeable on the up and coming engine Godot, specifi
 
 [Software Demo Video](https://youtu.be/vREekBrXbVQ)
 [Part 2: Shaders](https://www.youtube.com/watch?v=H1YkE-9Xhk8)
+[Part 3: Networking](https://www.youtube.com/watch?v=2VZNu8mQ1O8)
 
 # Development Environment
 
@@ -35,7 +36,10 @@ Three shaders have been fully implemented.
 Two of them can be seen when starting the game. The first is a diamonds effect that covers the screen in darkness. The second is a psychedillic shaders effect that works as a loading screen. 
 The final shader is a blinking shader that appears whenever the player takes damage.
 
-
+# Module 3 Changes
+The game is now properly and fully multiplayer networked.
+The main menu now allows players to change which port and IP address they would like to connect to.
+Network optimization techniques have been employed to reduce packets sent, making the game easier to run on poor networks.
 # Future Work
 
 * Finalize multiplayer elements
