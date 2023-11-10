@@ -1,7 +1,5 @@
 extends Node
 
-var Address = "127.0.0.1"
-var Port = 8910
 var peer
 var Players = {}
 var LocalPlayerName
@@ -39,9 +37,9 @@ func peer_connected(id):
 func peer_disconnected(id):
 	print("peer disconnected: " + str(id))
 
-func BeginHosting(NewName):
+func BeginHosting(NewName,Port):
 	peer = ENetMultiplayerPeer.new()
-	var error = peer.create_server(Port,32)
+	var error = peer.create_server(int(Port),32)
 	if error != OK:
 		print("Cannot Host: " + error)
 		return
@@ -51,9 +49,9 @@ func BeginHosting(NewName):
 	print("Waiting for players")
 	SendPlayerInformation(NewName,multiplayer.get_unique_id())
 	
-func JoinGame(NewName):
+func JoinGame(NewName,Address,Port):
 	LocalPlayerName = NewName
 	peer = ENetMultiplayerPeer.new()
-	peer.create_client(Address,Port)
+	peer.create_client(Address,int(Port))
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	multiplayer.set_multiplayer_peer(peer)

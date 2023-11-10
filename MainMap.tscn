@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dopnnj1dqdr8m"]
+[gd_scene load_steps=9 format=3 uid="uid://dopnnj1dqdr8m"]
 
 [ext_resource type="Script" path="res://LevelManager.gd" id="1_evhv1"]
 [ext_resource type="PackedScene" uid="uid://8dkruhhct78k" path="res://MainCharacter.tscn" id="2_nrl5g"]
 [ext_resource type="Texture2D" uid="uid://b6xdyrv12tbxp" path="res://Art/tilesheet.png" id="3_0hml4"]
 [ext_resource type="PackedScene" uid="uid://donvdvxsn3tkj" path="res://Weapons/trap_spear.tscn" id="4_ok7ty"]
+[ext_resource type="PackedScene" uid="uid://cvxox04gdetw5" path="res://EnemySpawner.tscn" id="5_d0nkt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0mh0w"]
 texture = ExtResource("3_0hml4")
@@ -481,3 +482,6 @@ navigation_polygon = SubResource("NavigationPolygon_13vra")
 
 [node name="TrapSpear" parent="." instance=ExtResource("4_ok7ty")]
 position = Vector2(-128, 16)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("5_d0nkt")]
+position = Vector2(704, -216)

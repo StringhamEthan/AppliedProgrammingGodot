@@ -9,7 +9,6 @@ script = ExtResource("1_2r77o")
 AttackAnim = "Bow"
 IdleAnim = "BowIdle"
 ReleaseAnim = "ReleaseBow"
-PProjectile = "res://Weapons/arrow.tscn"
 AttackSound = "res://Audio/Arrow Fly 2_2.wav"
 LoadedBow = ExtResource("2_cpeic")
 UnloadedBow = ExtResource("3_53jxr")

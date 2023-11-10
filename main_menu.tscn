@@ -25,6 +25,23 @@ offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="NameLine" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Name"
+alignment = 1
+
+[node name="IPLine" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+text = "127.0.0.1"
+placeholder_text = "IP"
+alignment = 1
+
+[node name="PortName" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+text = "8910"
+placeholder_text = "Port"
+alignment = 1
+
 [node name="HostButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
@@ -46,13 +63,6 @@ text = "Start Game
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 text = "Exit"
-
-[node name="NameLine" type="LineEdit" parent="."]
-layout_mode = 0
-offset_left = 480.0
-offset_top = 128.0
-offset_right = 672.0
-offset_bottom = 159.0
 
 [connection signal="pressed" from="VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]

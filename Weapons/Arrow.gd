@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-var Damage = 25
-var SPEED = 50000
+var Damage := 25
+var SPEED := 50000
+var HitEnemies := true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -21,7 +22,7 @@ func _physics_process(delta):
 
 #damage ran into object and remove self.
 func _on_area_2d_body_entered(body):
-	if body.has_method("TakeDamage"):
+	if body.has_method("TakeDamage") && body.is_in_group("Enemy") == HitEnemies:
 		body.TakeDamage(Damage,GetKnockback())
 	queue_free()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://fbkxcuc2pt15"]
+[gd_scene load_steps=40 format=3 uid="uid://fbkxcuc2pt15"]
 
 [ext_resource type="Shader" path="res://Art/Shaders/BlinkShader.gdshader" id="1_28bbg"]
 [ext_resource type="Script" path="res://AI/BaseEnemy.gd" id="1_hx0pv"]
@@ -29,6 +29,9 @@ resource_local_to_scene = true
 shader = ExtResource("1_28bbg")
 shader_parameter/active = false
 shader_parameter/tint = Color(1, 0, 0.00784314, 1)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mawpn"]
+animation = &"Human/Bow"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ooij0"]
 animation = &"Human/BowIdle"
@@ -73,6 +76,9 @@ graph_offset = Vector2(-81, -30)
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cc46m"]
 animation = &"Human/Punch"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m0nfv"]
+animation = &"Human/ReleaseBow"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n6et8"]
 animation = &"Human/Spear"
 
@@ -100,18 +106,32 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m7bkk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nx427"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xe5ii"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_diboq"]
+states/Bow/node = SubResource("AnimationNodeAnimation_mawpn")
+states/Bow/position = Vector2(488, 199)
 states/Idle/node = SubResource("AnimationNodeStateMachine_n7xmb")
 states/Idle/position = Vector2(376, 107)
 states/Punch/node = SubResource("AnimationNodeAnimation_cc46m")
 states/Punch/position = Vector2(368, 30)
+states/ReleaseBow/node = SubResource("AnimationNodeAnimation_m0nfv")
+states/ReleaseBow/position = Vector2(296, 208)
 states/Spear/node = SubResource("AnimationNodeAnimation_n6et8")
 states/Spear/position = Vector2(466, 42)
 states/Start/position = Vector2(193, 120)
 states/Sword/node = SubResource("AnimationNodeAnimation_xlvw5")
 states/Sword/position = Vector2(572, 105)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_knr53"), "Idle", "Punch", SubResource("AnimationNodeStateMachineTransition_26lnp"), "Punch", "Idle", SubResource("AnimationNodeStateMachineTransition_f6dra"), "Idle", "Spear", SubResource("AnimationNodeStateMachineTransition_jeu4y"), "Spear", "Idle", SubResource("AnimationNodeStateMachineTransition_4jo7y"), "Idle", "Sword", SubResource("AnimationNodeStateMachineTransition_aud5p"), "Sword", "Idle", SubResource("AnimationNodeStateMachineTransition_0krn5")]
-graph_offset = Vector2(-163, -87)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_knr53"), "Idle", "Punch", SubResource("AnimationNodeStateMachineTransition_26lnp"), "Punch", "Idle", SubResource("AnimationNodeStateMachineTransition_f6dra"), "Idle", "Spear", SubResource("AnimationNodeStateMachineTransition_jeu4y"), "Spear", "Idle", SubResource("AnimationNodeStateMachineTransition_4jo7y"), "Idle", "Sword", SubResource("AnimationNodeStateMachineTransition_aud5p"), "Sword", "Idle", SubResource("AnimationNodeStateMachineTransition_0krn5"), "Idle", "Bow", SubResource("AnimationNodeStateMachineTransition_m7bkk"), "Bow", "ReleaseBow", SubResource("AnimationNodeStateMachineTransition_nx427"), "ReleaseBow", "Idle", SubResource("AnimationNodeStateMachineTransition_xe5ii")]
+graph_offset = Vector2(-139, 11)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vylqk"]
 properties/0/path = NodePath(".:position")
@@ -146,6 +166,7 @@ position = Vector2(-60.8, 0.000202179)
 [node name="HandCollision" type="CollisionShape2D" parent="Body/Hand1/Area2D"]
 position = Vector2(60.8001, -0.000102997)
 shape = SubResource("CircleShape2D_c1dtv")
+disabled = true
 
 [node name="Hand2" type="Sprite2D" parent="Body"]
 material = SubResource("ShaderMaterial_c0e2t")

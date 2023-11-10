@@ -9,6 +9,7 @@ var Weaving = false
 var WeavingRange = 400
 var WeaveLeft : bool = true
 var Weapon = null
+var RangedFighter = false
 @onready var NavAgent : NavigationAgent2D = $NavigationAgent2D
 @onready var state_machine : AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/playback")
 @onready var IdleMachine : AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/Idle/playback")
@@ -19,56 +20,73 @@ func _ready():
 	
 
 func Setup():
-	ChangeWeapon("res://Weapons/spear.tscn")
+	if multiplayer.is_server():
+		var RandWeap = randi_range(0,2)
+		if RandWeap == 0:
+			rpc("SetWeapon","res://Weapons/spear.tscn")
+		elif RandWeap == 1:
+			rpc("SetWeapon","res://Weapons/Sword.tscn")
+		else:
+			rpc("SetWeapon","res://Weapons/Bow.tscn")
+			RangedFighter = true
 	WeaveLeft = randi_range(0,1)
-	WeavingRange = randf_range(300,600)
+	if RangedFighter == false:
+		WeavingRange = randf_range(300,600)
+	else:
+		WeavingRange = randf_range(800,1200)
 	MoveSpeed = randf_range(160,250)
 	await get_tree().physics_frame
 	Target = FindAlivePlayer()
-	NavAgent.target_position = Target.global_position
+	if Target != null:
+		NavAgent.target_position = Target.global_position
+
+@rpc("call_local","authority")
+func SetWeapon(NewWeapon):
+	ChangeWeapon(NewWeapon)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 func _physics_process(delta):
-	if Target == null:
-		Target = FindAlivePlayer()
-		return
-	if MovingDirection != Vector2(0,0):
-		velocity =  MovingDirection
-		move_and_slide()
-		return
-	if Weaving == false:
-		if NavAgent.is_navigation_finished():
-			return
-		velocity = NavAgent.get_next_path_position() - global_position
-		velocity = velocity.normalized()
-		velocity = velocity * MoveSpeed
-		look_at(Target.global_position)
-		move_and_slide()
-		NavAgent.target_position = Target.global_position
-		if global_position.distance_to(Target.global_position) < 100:
-			Attack()
-			Weaving = true
-			$WeaveTimer.wait_time = randf_range(.3,.6)
-			$WeaveTimer.start()
-		if Target.Downed == true:
+	if multiplayer.is_server():
+		if Target == null:
 			Target = FindAlivePlayer()
-	else:
-		look_at(Target.global_position)
-		print(global_position.distance_to(Target.global_position))
-		if global_position.distance_to(Target.global_position) < WeavingRange:
-			velocity = -transform.x * MoveSpeed
-		elif global_position.distance_to(Target.global_position) > (WeavingRange + 100):
-			velocity = transform.x * MoveSpeed
+			return
+		if MovingDirection != Vector2(0,0):
+			velocity =  MovingDirection
+			move_and_slide()
+			return
+		if Weaving == false:
+			if NavAgent.is_navigation_finished():
+				return
+			velocity = NavAgent.get_next_path_position() - global_position
+			velocity = velocity.normalized()
+			velocity = velocity * MoveSpeed
+			look_at(Target.global_position)
+			move_and_slide()
+			NavAgent.target_position = Target.global_position
+			if global_position.distance_to(Target.global_position) < 100 || RangedFighter == true && global_position.distance_to(Target.global_position) < 2000:
+				rpc("Attack")
+				Weaving = true
+				$WeaveTimer.wait_time = randf_range(.3,.6)
+				$WeaveTimer.start()
+			if Target.Downed == true:
+				Target = FindAlivePlayer()
 		else:
-			if WeaveLeft == true:
-				velocity = transform.y * MoveSpeed
+			look_at(Target.global_position)
+			print(global_position.distance_to(Target.global_position))
+			if global_position.distance_to(Target.global_position) < WeavingRange:
+				velocity = -transform.x * MoveSpeed
+			elif global_position.distance_to(Target.global_position) > (WeavingRange + 100):
+				velocity = transform.x * MoveSpeed
 			else:
-				velocity = -transform.y * MoveSpeed
-		#velocity *= transform.y
-		move_and_slide()
+				if WeaveLeft == true:
+					velocity = transform.y * MoveSpeed
+				else:
+					velocity = -transform.y * MoveSpeed
+			#velocity *= transform.y
+			move_and_slide()
 
 
 func _on_area_2d_body_entered(body):
@@ -93,7 +111,11 @@ func TakeDamage(Damage,Direction = null):
 	#Only the server can decide if someone dies
 	if multiplayer.is_server():
 		if Health <= 0:
-			queue_free()
+			rpc("Die")
+
+@rpc("authority","call_local")
+func Die():
+	queue_free()
 
 func FlashDamage():
 	$Body/Hand1.material.set_shader_parameter("active",true)
