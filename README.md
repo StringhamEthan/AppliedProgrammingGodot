@@ -19,7 +19,7 @@ I wanted to become more knowledgeable on the up and coming engine Godot, specifi
 [Software Demo Video](https://youtu.be/vREekBrXbVQ)
 [Part 2: Shaders](https://www.youtube.com/watch?v=H1YkE-9Xhk8)
 [Part 3: Networking](https://www.youtube.com/watch?v=2VZNu8mQ1O8)
-
+[Part 3: State Machine AI](https://www.youtube.com/watch?v=3fkzYN8VCt0)
 # Development Environment
 
 This game was developed in Godot using GDscript. No additional libraries or systems were used outside of what is included in base Godot.
@@ -40,8 +40,13 @@ The final shader is a blinking shader that appears whenever the player takes dam
 The game is now properly and fully multiplayer networked.
 The main menu now allows players to change which port and IP address they would like to connect to.
 Network optimization techniques have been employed to reduce packets sent, making the game easier to run on poor networks.
+
+# Module 4 Changes
+
+Enemies spawn that will attack the players.
+They can have multiple different weapons and attack styles/preferences
+Enemies integrate with existing animation systems and codebases for a flexible, modular system.
+
 # Future Work
 
-* Finalize multiplayer elements
-* Get enemy ai working
-* Polish and finish the UI and inventory
+This project is finished!
